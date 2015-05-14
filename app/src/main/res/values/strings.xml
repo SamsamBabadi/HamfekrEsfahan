@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HamfekrEsfahan</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_map">مشاهده بر روی نقشه</string>
+    <string name="btn_participation">شرکت در رویداد</string>
+    <string name="add_event">ثبت در تقویم</string>
+    <string name="internet_fail">خطا در برقراری ارتباط\nاتصال اینترنت خود را بررسی و مجددا تلاش کنید!</string>
+    <string name="data_fail">خطا در دریافت اطلاعات ، مجددا تلاش کنید!</string>
+</resources>
