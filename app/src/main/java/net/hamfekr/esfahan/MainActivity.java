@@ -20,6 +20,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import com.onesignal.OneSignal;
+import com.onesignal.OneSignal.NotificationOpenedHandler;
+
+import org.json.JSONObject;
+
 
 public class MainActivity extends Activity {
 
@@ -38,6 +43,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        OneSignal.init(this, "356876678015", "563d7aac-05ea-11e5-ada7-e7dbeac3a71e", new NotificationOpenedHandler() {
+            @Override
+            public void notificationOpened(String s, JSONObject jsonObject, boolean b) {
+
+            }
+        });
+
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         tvDateTime = (TextView) findViewById(R.id.tvDateTime);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -47,6 +59,18 @@ public class MainActivity extends Activity {
         failedView = (LinearLayout) findViewById(R.id.failedView);
 
         LoadData();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OneSignal.onPaused();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OneSignal.onResumed();
     }
 
     private void LoadData() {
