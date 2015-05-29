@@ -14,20 +14,19 @@ public class EventInfoJsonParser {
 
         try {
 
-            JSONArray ar = new JSONArray(content);
+            JSONObject obj = new JSONObject(content);
             EventInfo eventInfo = new EventInfo();
 
-            JSONObject obj = ar.getJSONObject(0);
-            eventInfo.setAddress(obj.getString("address"));
-            eventInfo.setDate(obj.getString("date"));
-            eventInfo.setLat(obj.getDouble("lat"));
-            eventInfo.setLng(obj.getDouble("lng"));
-            eventInfo.setBeginTime(obj.getString("beginTime"));
-            eventInfo.setLongTime(obj.getInt("longTime"));
-            eventInfo.setTime(obj.getString("time"));
-            eventInfo.setTitle(obj.getString("title"));
-            eventInfo.setDetails(obj.getString("details"));
-            eventInfo.setRegisterUrl(obj.getString("registerUrl"));
+            eventInfo.setAddress(obj.getString("Address"));
+            eventInfo.setDate(obj.getString("Date"));
+            eventInfo.setLat(obj.getDouble("Latitude"));
+            eventInfo.setLng(obj.getDouble("Longitude"));
+            eventInfo.setBeginTime(obj.getString("BeginTime"));
+            eventInfo.setLongTime(obj.getInt("LongTime"));
+            eventInfo.setTime(obj.getString("Time"));
+            eventInfo.setTitle(obj.getString("Title"));
+            eventInfo.setDetails(obj.getString("Details"));
+            eventInfo.setRegisterUrl(obj.getString("RegisterURL"));
 
             return eventInfo;
 

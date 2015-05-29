@@ -12,12 +12,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import junit.framework.TestCase;
 
 import net.hamfekr.esfahan.model.EventInfo;
-import net.hamfekr.esfahan.model.HttpManager;
 import net.hamfekr.esfahan.parser.EventInfoJsonParser;
 
 import java.text.ParseException;
@@ -55,7 +51,7 @@ public class MainActivity extends Activity {
 
     private void LoadData() {
         if (isOnline()) {
-            requestData("http://navidbehrangi.com/hamfekr/eventinfo.json");
+            requestData("http://samsambabadi.ir/HamfekrEsfahan/eventinfo.json");
         } else {
             showFailedView(getString(R.string.internet_fail));
         }
@@ -142,7 +138,7 @@ public class MainActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
 
-            String content = HttpManager.getData(params[0]);
+            String content = HttpManager.getData(params[0],"HamfekrEsfahan","!EsfahanHamfekr1820");
             return content;
         }
 
