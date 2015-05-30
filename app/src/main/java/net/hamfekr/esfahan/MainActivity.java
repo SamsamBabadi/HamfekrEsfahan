@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OneSignal.init(this, "356876678015", "563d7aac-05ea-11e5-ada7-e7dbeac3a71e", new NotificationOpenedHandler() {
+        OneSignal.init(this, "Product ID", "API Key", new NotificationOpenedHandler() {
             @Override
             public void notificationOpened(String s, JSONObject jsonObject, boolean b) {
 
@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
 
-            String content = HttpManager.getData(params[0],"HamfekrEsfahan","!EsfahanHamfekr1820");
+            String content = HttpManager.getData(params[0],"UserName","Password");
             return content;
         }
 
