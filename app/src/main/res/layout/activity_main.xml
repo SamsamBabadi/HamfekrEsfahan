@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
     tools:context=".MainActivity">
 
     <ScrollView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +20,7 @@
             android:gravity="center"
             android:layoutDirection="rtl"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -100,42 +100,58 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
-            <Button
+            <LinearLayout
+                android:layout_margin="15dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btn_background"
-                android:onClick="btnShowOnMapClick"
-                android:text="@string/btn_map"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:weightSum="4">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_background"
-                android:onClick="btnAddEventClick"
-                android:text="@string/add_event"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                <ImageButton
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="btnShowOnMapClick"
+                    android:src="@drawable/ic_action_maps_place"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_background"
-                android:onClick="btnRegisterClick"
-                android:text="@string/btn_participation"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                <ImageButton
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="btnAddEventClick"
+                    android:src="@drawable/ic_add_calendar"/>
 
+                <ImageButton
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="btnRegisterClick"
+                    android:src="@drawable/ic_register"/>
+
+                <ImageButton
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="btnShare"
+                    android:src="@drawable/ic_action_social_share"/>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:scaleType="fitCenter"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:onClick="btnGit"
+                android:src="@drawable/ic_github" />
 
         </LinearLayout>
     </ScrollView>
@@ -159,27 +175,34 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_error"/>
+            android:src="@drawable/ic_error" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/tvFail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:gravity="center"
             android:textColor="@android:color/holo_red_light"
             android:textSize="15sp" />
 
 
         <ImageButton
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
             android:onClick="btnReloadClick"
             android:src="@drawable/ic_reload" />
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="2dp"
+        android:text="@string/power_by" />
 
 </RelativeLayout>

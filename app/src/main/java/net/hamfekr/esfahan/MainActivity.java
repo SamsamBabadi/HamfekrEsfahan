@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OneSignal.init(this, "Product ID", "API Key", new NotificationOpenedHandler() {
+        OneSignal.init(this, "", "", new NotificationOpenedHandler() {
             @Override
             public void notificationOpened(String s, JSONObject jsonObject, boolean b) {
 
@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
         super.onPause();
         OneSignal.onPaused();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -75,7 +76,7 @@ public class MainActivity extends Activity {
 
     private void LoadData() {
         if (isOnline()) {
-            requestData("http://samsambabadi.ir/HamfekrEsfahan/eventinfo.json");
+            requestData("");
         } else {
             showFailedView(getString(R.string.internet_fail));
         }
@@ -113,41 +114,67 @@ public class MainActivity extends Activity {
     }
 
     public void btnShowOnMapClick(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("geo:0,0?q=" + (eventInfo.getLat() + ", " + eventInfo.getLng())));
         try {
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("geo:0,0?q=" + (eventInfo.getLat() + ", " + eventInfo.getLng())));
+            try {
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception ex) {
         }
     }
 
     public void btnAddEventClick(View view) {
-        Calendar cal = Calendar.getInstance();
         try {
-            cal.setTime(new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss").parse(eventInfo.getBeginTime()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Intent intent = new Intent(Intent.ACTION_EDIT);
-        intent.setType("vnd.android.cursor.item/event");
-        intent.putExtra("beginTime", cal.getTimeInMillis());
-        intent.putExtra("allDay", false);
-        intent.putExtra("endTime", cal.getTimeInMillis() + eventInfo.getLongTime() * 60 * 1000);
-        intent.putExtra("title", eventInfo.getTitle());
-        intent.putExtra("description", eventInfo.getDate() + "\n" + eventInfo.getAddress());
-        intent.putExtra("eventLocation", "geo:0,0?q=" + (eventInfo.getLat() + ", " + eventInfo.getLng()));
+            Calendar cal = Calendar.getInstance();
+            try {
+                cal.setTime(new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss").parse(eventInfo.getBeginTime()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", cal.getTimeInMillis());
+            intent.putExtra("allDay", false);
+            intent.putExtra("endTime", cal.getTimeInMillis() + eventInfo.getLongTime() * 60 * 1000);
+            intent.putExtra("title", eventInfo.getTitle());
+            intent.putExtra("description", eventInfo.getDate() + "\n" + eventInfo.getAddress());
+            intent.putExtra("eventLocation", "geo:0,0?q=" + (eventInfo.getLat() + ", " + eventInfo.getLng()));
 
-        startActivity(intent);
+            startActivity(intent);
+        } catch (Exception ex) {
+        }
     }
 
+
     public void btnRegisterClick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(eventInfo.getRegisterUrl()));
-        startActivity(browserIntent);
+        try {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(eventInfo.getRegisterUrl()));
+            startActivity(browserIntent);
+        } catch (Exception ex) {
+        }
     }
 
     public void btnReloadClick(View view) {
         LoadData();
+    }
+
+    public void btnGit(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/SamsamBabadi/HamfekrEsfahan"));
+        startActivity(browserIntent);
+    }
+
+    public void btnShare(View view) {
+        try {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, eventInfo.getShareText());
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+        } catch (Exception ex) {
+        }
     }
 
     private class GetEventInfoTask extends AsyncTask<String, Void, String> {
@@ -162,7 +189,7 @@ public class MainActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
 
-            String content = HttpManager.getData(params[0],"UserName","Password");
+            String content = HttpManager.getData(params[0], "", "");
             return content;
         }
 

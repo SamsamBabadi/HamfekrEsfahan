@@ -15,6 +15,7 @@ public class EventInfo {
     private String beginTime;
     private int longTime;
     private String registerUrl;
+    private String shareText;
 
     public String getRegisterUrl() {
         return registerUrl;
@@ -94,5 +95,13 @@ public class EventInfo {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public String getShareText() {
+        return shareText;
+    }
+
+    public void setShareText(String shareText) {
+        this.shareText = shareText;
     }
 }

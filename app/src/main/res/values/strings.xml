@@ -8,4 +8,6 @@
     <string name="add_event">ثبت در تقویم</string>
     <string name="internet_fail">خطا در برقراری ارتباط\nاتصال اینترنت خود را بررسی و مجددا تلاش کنید!</string>
     <string name="data_fail">خطا در دریافت اطلاعات ، مجددا تلاش کنید!</string>
+    <string name="power_by">Powered by isfahanplus.ir</string>
+    <string name="app_name_fa">همفکر اصفهان</string>
 </resources>

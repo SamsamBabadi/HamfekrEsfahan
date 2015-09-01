@@ -26,6 +26,7 @@ public class EventInfoJsonParser {
             eventInfo.setTime(obj.getString("Time"));
             eventInfo.setTitle(obj.getString("Title"));
             eventInfo.setDetails(obj.getString("Details"));
+            eventInfo.setShareText(obj.getString("ShareText"));
             eventInfo.setRegisterUrl(obj.getString("RegisterURL"));
 
             return eventInfo;
