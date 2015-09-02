@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">HamfekrEsfahan</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="btn_map">مشاهده بر روی نقشه</string>
-    <string name="btn_participation">شرکت در رویداد</string>
-    <string name="add_event">ثبت در تقویم</string>
     <string name="internet_fail">خطا در برقراری ارتباط\nاتصال اینترنت خود را بررسی و مجددا تلاش کنید!</string>
     <string name="data_fail">خطا در دریافت اطلاعات ، مجددا تلاش کنید!</string>
-    <string name="power_by">Powered by isfahanplus.ir</string>
+    <string name="power_by">Powered by IsfahanPlus.ir</string>
     <string name="app_name_fa">همفکر اصفهان</string>
+    <string name="action_title_map_fa">نقشه</string>
+    <string name="action_title_calendar_fa">ثبت در تقویم</string>
+    <string name="action_title_register_fa">ثبت نام در رویداد</string>
+    <string name="action_title_share_fa">اشتراک گذاری</string>
 </resources>

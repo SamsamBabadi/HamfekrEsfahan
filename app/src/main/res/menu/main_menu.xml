@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:icon="@drawable/ic_action_maps_place_white"
+        android:title="@string/action_title_map_fa"
+        app:showAsAction="always"
+        android:id="@+id/action_map"/>
+
+    <item android:icon="@drawable/ic_calendar_white"
+        android:title="@string/action_title_calendar_fa"
+        app:showAsAction="always"
+        android:id="@+id/action_calendar"/>
+
+    <item android:icon="@drawable/ic_register_white"
+        android:title="@string/action_title_register_fa"
+        app:showAsAction="always"
+        android:id="@+id/action_register"/>
+
+    <item android:icon="@drawable/ic_action_social_share_white"
+        android:title="@string/action_title_share_fa"
+        app:showAsAction="always"
+        android:id="@+id/action_share"/>
+
+</menu>

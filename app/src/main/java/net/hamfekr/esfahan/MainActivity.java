@@ -1,6 +1,5 @@
 package net.hamfekr.esfahan;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -8,25 +7,28 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.onesignal.OneSignal;
+import com.onesignal.OneSignal.NotificationOpenedHandler;
+
 import net.hamfekr.esfahan.model.EventInfo;
 import net.hamfekr.esfahan.parser.EventInfoJsonParser;
+
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import com.onesignal.OneSignal;
-import com.onesignal.OneSignal.NotificationOpenedHandler;
 
-import org.json.JSONObject;
-
-
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     TextView tvTitle;
     TextView tvDateTime;
@@ -46,7 +48,6 @@ public class MainActivity extends Activity {
         OneSignal.init(this, "", "", new NotificationOpenedHandler() {
             @Override
             public void notificationOpened(String s, JSONObject jsonObject, boolean b) {
-
             }
         });
 
@@ -61,6 +62,31 @@ public class MainActivity extends Activity {
         LoadData();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.action_map:
+                showOnMap();
+                break;
+            case R.id.action_calendar:
+                addEvent();
+                break;
+            case R.id.action_register:
+                registerEvent();
+                break;
+            case R.id.action_share:
+                shareEvent();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onPause() {
@@ -113,7 +139,7 @@ public class MainActivity extends Activity {
         task.execute(uri);
     }
 
-    public void btnShowOnMapClick(View view) {
+    public void showOnMap() {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("geo:0,0?q=" + (eventInfo.getLat() + ", " + eventInfo.getLng())));
@@ -126,7 +152,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void btnAddEventClick(View view) {
+    public void addEvent() {
         try {
             Calendar cal = Calendar.getInstance();
             try {
@@ -149,7 +175,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public void btnRegisterClick(View view) {
+    public void registerEvent() {
         try {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(eventInfo.getRegisterUrl()));
             startActivity(browserIntent);
@@ -166,7 +192,7 @@ public class MainActivity extends Activity {
         startActivity(browserIntent);
     }
 
-    public void btnShare(View view) {
+    public void shareEvent() {
         try {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
